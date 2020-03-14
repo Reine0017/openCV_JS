@@ -22,5 +22,12 @@
 			img_input.src = URL.createObjectURL(e.target.files[0])
 
 		},false);
+
+		img_input.onload = function(){
+			let mat = cv.imread(img_input);
+			cv.cvtColor(mat,mat,cv.COLOR_RGB2GRAY);
+			cv.imshow('output', mat);
+			mat.delete();
+		}
 	</script>
 </html>
